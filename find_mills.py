@@ -4,6 +4,7 @@ import praw
 r = praw.Reddit('Find Mills College mentions in local subreddits.')
 #r.login()
 recorded = []
+local_subreddits = ['oakland', 'bayarea', 'eastbay', 'sanfrancisco']
 
 def write_to_log(sub):
 	with open("mills_log.txt", "a") as log:
@@ -23,9 +24,6 @@ def check_this_subreddit(subreddit):
 			write_to_log(submission)
 
 while True:
-	check_this_subreddit('oakland')
-	check_this_subreddit('bayarea')
-	check_this_subreddit('eastbay')
-	check_this_subreddit('sanfrancisco')
+	for sub in local_subreddits: check_this_subreddit(sub)
 
 	time.sleep(1800)
